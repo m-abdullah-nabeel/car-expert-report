@@ -173,9 +173,9 @@ export default function PrimarySearchAppBar() {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        Car Expert Reports
                     </Typography>
-                    <Search>
+                    {/* <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
@@ -183,7 +183,7 @@ export default function PrimarySearchAppBar() {
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
                         />
-                    </Search>
+                    </Search> */}
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">

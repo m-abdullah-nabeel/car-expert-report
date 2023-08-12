@@ -9,6 +9,7 @@ import Header from "./components/layout/header"
 function AppRouter() {
   return (
     <div style={{ position: 'relative' }}>
+      {/* <title>Car Expert Reports</title> */}
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
