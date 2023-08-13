@@ -8,28 +8,18 @@ import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import green from '@mui/material/colors/green';
 import Box from '@mui/material/Box/Box';
-import candles from '../../2.jpg';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import { purple, blueGrey, red } from '@mui/material/colors';
-// 
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
+import { Divider } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
+    border: '1px solid black',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
@@ -70,13 +60,28 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function BasicTable() {
     const [checked, setChecked] = React.useState([1]);
+    const [searchText, setSearch] = React.useState("")
+    const [searchResult, setResult] = React.useState([])
     const [cars_list, setList] = React.useState([
         { id: 1, name: 'Alice', plate_no: 'ADE089', date: "11-07-2021", model: "Prius" },
         { id: 2, name: 'Bob', plate_no: 'LAD987', date: "11-07-2021", model: "Prius" },
         { id: 3, name: 'Carl', plate_no: 'LEU6858', date: "11-07-2021", model: "Prius" },
         { id: 4, name: 'Dean', plate_no: 'QAT8809', date: "11-07-2021", model: "Prius" },
-        { id: 5, name: 'Ethan', plate_no: 'FDA2829', date: "11-07-2021", model: "Prius" },
+        { id: 5, name: 'Ethan 2', plate_no: 'FDA2829', date: "11-07-2021", model: "Prius" },
+        { id: 6, name: 'Ethan', plate_no: 'FDA2829', date: "11-07-2021", model: "Prius" },
     ])
+
+    useEffect(() => {
+        cars_list.map((x) => {
+            // console.log(x)
+            // console.log(JSON.stringify(x).toLowerCase().includes("name"))
+            if (JSON.stringify(x).toLowerCase().includes(searchText)) {
+                setResult([...searchResult, x])
+            }
+            console.log(searchResult)
+        })
+
+    }, [searchText])
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -92,20 +97,14 @@ export default function BasicTable() {
     };
 
     return (
-        <Box sx={{ marginTop: 1 }} style={{
-            backgroundImage: `url(${candles})`,
-        }}>
+        <Box sx={{ marginTop: 1 }} >
             <List dense sx={{
                 width: '100%',
                 bgcolor: 'background.paper',
                 // maxWidth: 360, 
             }}>
-                <ListItem
-                    // key={'value'}
-                    // disablePadding
-                    sx={{ backgroundColor: blueGrey[50], justifyContent: "space-between" }}
-                >
-                    <ListItemText sx={{ width: 100 }} id={"DRopdown Filter"} primary={"DRopdown Filter"} />
+                <ListItem key={'index'} sx={{}}>
+                    <ListItemText id={"Dropdown Filter"} primary={"Dropdown Filter"} />
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
@@ -113,6 +112,12 @@ export default function BasicTable() {
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
+                            onChange={
+                                (e) => {
+                                    setSearch(e)
+                                    setResult([])
+                                }
+                            }
                         />
                     </Search>
                     <Box>
@@ -120,14 +125,14 @@ export default function BasicTable() {
                             Action 1, 2, 3
                         </Typography>
                     </Box>
-                    {/* </ListItemButton> */}
                 </ListItem>
+                <Divider />
 
                 {cars_list.map((value) => {
                     const labelId = `checkbox-list-secondary-label-${value}`;
                     return (
                         <ListItem
-                            key={value}
+                            key={value.id}
                             // secondaryAction={
                             //     <Checkbox
                             //         edge="end"
@@ -146,51 +151,66 @@ export default function BasicTable() {
                                         src={`/static/images/avatar/${value + 1}.jpg`}
                                     />
                                 </ListItemAvatar>
-                                <ListItemText sx={{ width: 100 }} id={value.id} primary={value.name} />
-                                <ListItemText sx={{ width: 100 }} id={value.id} primary={value.plate_no} />
-                                <ListItemText sx={{ width: 100 }} id={value.id} primary={value.date} />
-                                <ListItemText sx={{ width: 100 }} id={value.id} primary={value.model} />
-                                <ListItemText sx={{ width: 100 }} id={value.id} primary={"Select / More"} />
+                                <ListItemText sx={{ width: 100 }} id={value.name} primary={value.name} />
+                                <ListItemText sx={{ width: 100 }} id={value.plate_no} primary={value.plate_no} />
+                                <ListItemText sx={{ width: 100 }} id={value.date} primary={value.date} />
+                                <ListItemText sx={{ width: 100 }} id={value.model} primary={value.model} />
+                                <ListItemText sx={{ width: 100 }} id={"Select"} primary={"Select / More"} />
                             </ListItemButton>
                         </ListItem>
                     );
                 })}
             </List>
-            {/* 
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                    <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
-                    </TableRow> 
-                    </TableHead>
-                    <TableBody>
-                        {cars_list.map((row) => (
-                            <TableRow
-                                key={row.name}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell sx={{ flex: 1, flexDirection: 'row' }}>
-                                    <Avatar sx={{ width: 24, height: 24, bgcolor: green[500] }} alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                                </TableCell>
-                                <TableCell>
-                                    {row.name}
-                                </TableCell>
 
-                                <TableCell align="right">{row.plate_no}</TableCell>
-                                <TableCell align="right">{row.date}</TableCell>
-                                <TableCell align="right">{row.model}</TableCell>
-                                <TableCell align="right">Select / More</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-             */}
+            <Box sx={{ height: 25 }}>
+
+            </Box>
+
+            <List dense sx={{
+                width: '100%',
+                bgcolor: 'background.paper',
+                opacity: 0.5
+                // maxWidth: 360, 
+            }}>
+                {cars_list.map((value) => {
+                    const labelId = `checkbox-list-secondary-label-${value}`;
+                    return (
+                        <ListItem
+                            key={value.id}
+                            // secondaryAction={
+                            //     <Checkbox
+                            //         edge="end"
+                            //         onChange={handleToggle(value)}
+                            //         checked={checked.indexOf(value) !== -1}
+                            //         inputProps={{ 'aria-labelledby': labelId }}
+                            //     />
+                            // }
+                            disablePadding
+                        >
+                            <ListItemButton>
+                                <ListItemAvatar sx={{ border: '1px dotted bue' }}>
+                                    <Avatar
+                                        sx={{ bgcolor: green[500] }}
+                                        alt={`Avatar n°${value + 1}`}
+                                        src={`/static/images/avatar/${value + 1}.jpg`}
+                                    />
+                                </ListItemAvatar>
+                                <ListItemText sx={{ width: 100 }} id={value.name} primary={value.name} />
+                                <ListItemText sx={{ width: 100 }} id={value.plate_no} primary={value.plate_no} />
+                                <ListItemText sx={{ width: 100 }} id={value.date} primary={value.date} />
+                                <ListItemText sx={{ width: 100 }} id={value.model} primary={value.model} />
+                                <ListItemText sx={{ width: 100 }} id={"Select"} primary={"Select / More"} />
+                            </ListItemButton>
+                        </ListItem>
+                    );
+                })}
+
+            </List>
+
+            <Box sx={{ height: 50 }}>
+
+            </Box>
+
         </Box>
     );
 }
