@@ -15,6 +15,20 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+// drawers imports
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { blueGrey } from '@mui/material/colors';
+
+const drawerWidth = 60;
+
 
 export default function PrimarySearchAppBar() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -115,8 +129,8 @@ export default function PrimarySearchAppBar() {
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+        <Box sx={{ flexGrow: 1, zIndex: 100, }}>
+            <AppBar position="fixed" >
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -177,6 +191,7 @@ export default function PrimarySearchAppBar() {
                     </Box>
                 </Toolbar>
             </AppBar>
+
             {renderMobileMenu}
             {renderMenu}
         </Box>

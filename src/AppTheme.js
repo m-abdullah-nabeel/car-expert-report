@@ -4,7 +4,6 @@ import AppRouter from './AppRouter';
 import { red, blueGrey } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Box from "@mui/material/Box"
-import candles from "../src/img/bg-car-2.jpg"
 
 const theme =
     createTheme({
@@ -20,7 +19,7 @@ function ThemedApp() {
         <ThemeProvider theme={theme}>
             <Box id="bgimg">
                 <Box id="bg-layer" sx={{
-                    backgroundColor: "rgba(210, 210, 210, 0.7)"
+                    backgroundColor: "rgba(210, 210, 210, 0.5)"
                 }}>
                     <AppRouter />
                 </Box>
