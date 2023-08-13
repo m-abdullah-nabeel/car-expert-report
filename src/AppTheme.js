@@ -5,7 +5,6 @@ import { red, blueGrey } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Box from "@mui/material/Box"
 import candles from "../src/img/bg-car-2.jpg"
-// import styles from "App.css"
 
 const theme =
     createTheme({

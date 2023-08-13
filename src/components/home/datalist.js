@@ -151,20 +151,18 @@ export default function BasicTable() {
                                         src={`/static/images/avatar/${value + 1}.jpg`}
                                     />
                                 </ListItemAvatar>
-                                <ListItemText sx={{ width: 100 }} id={value.name} primary={value.name} />
-                                <ListItemText sx={{ width: 100 }} id={value.plate_no} primary={value.plate_no} />
-                                <ListItemText sx={{ width: 100 }} id={value.date} primary={value.date} />
-                                <ListItemText sx={{ width: 100 }} id={value.model} primary={value.model} />
-                                <ListItemText sx={{ width: 100 }} id={"Select"} primary={"Select / More"} />
+                                <ListItemText sx={{ width: 100, }} id={value.name} primary={value.name} />
+                                <ListItemText sx={{ width: 100, }} id={value.plate_no} primary={value.plate_no} />
+                                <ListItemText sx={{ width: 100, }} id={value.date} primary={value.date} />
+                                <ListItemText sx={{ width: 100, }} id={value.model} primary={value.model} />
+                                <ListItemText sx={{ width: 5, textAlign: "center" }} id={"Select"} primary={"Select"} />
                             </ListItemButton>
                         </ListItem>
                     );
                 })}
             </List>
 
-            <Box sx={{ height: 25 }}>
-
-            </Box>
+            <Box sx={{ height: 25 }}></Box>
 
             <List dense sx={{
                 width: '100%',
@@ -188,18 +186,18 @@ export default function BasicTable() {
                             disablePadding
                         >
                             <ListItemButton>
-                                <ListItemAvatar sx={{ border: '1px dotted bue' }}>
+                                <ListItemAvatar sx={{ border: '1px dotted bue', justifyContent: "space-between" }}>
                                     <Avatar
                                         sx={{ bgcolor: green[500] }}
                                         alt={`Avatar n°${value + 1}`}
                                         src={`/static/images/avatar/${value + 1}.jpg`}
                                     />
                                 </ListItemAvatar>
-                                <ListItemText sx={{ width: 100 }} id={value.name} primary={value.name} />
-                                <ListItemText sx={{ width: 100 }} id={value.plate_no} primary={value.plate_no} />
-                                <ListItemText sx={{ width: 100 }} id={value.date} primary={value.date} />
-                                <ListItemText sx={{ width: 100 }} id={value.model} primary={value.model} />
-                                <ListItemText sx={{ width: 100 }} id={"Select"} primary={"Select / More"} />
+                                <ListItemText sx={{ width: 100, }} id={value.name} primary={value.name} />
+                                <ListItemText sx={{ width: 100, }} id={value.plate_no} primary={value.plate_no} />
+                                <ListItemText sx={{ width: 100, }} id={value.date} primary={value.date} />
+                                <ListItemText sx={{ width: 100, }} id={value.model} primary={value.model} />
+                                <ListItemText sx={{ width: 5, textAlign: "center" }} id={"Select"} primary={"Select"} />
                             </ListItemButton>
                         </ListItem>
                     );
@@ -207,9 +205,7 @@ export default function BasicTable() {
 
             </List>
 
-            <Box sx={{ height: 50 }}>
-
-            </Box>
+            <Box sx={{ height: 50 }}></Box>
 
         </Box>
     );
