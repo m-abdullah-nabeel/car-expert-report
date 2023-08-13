@@ -41,20 +41,13 @@
 #bgimg {
   /* The image used */
   background-image: url("../src/img/bg-car-2.jpg");
-
   /* Set a specific height */
-  min-height: '500px';
-
+  /* min-height: '500px'; */
+  height: "100vh";
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#bg-layer {
-  /* background: "linear-gradient(335deg, rgba(240,240,240,1) 0%, rgba(180,180,168,1) 100%)"; */
-  background-color: 'rgba(240, 240, 240, 0.6)';
-  background-size: "cover";
-  height: "100vh";
+  /* opacity: 0.5; */
 }
