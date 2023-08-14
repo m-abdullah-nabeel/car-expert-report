@@ -26,6 +26,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { blueGrey } from '@mui/material/colors';
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 60;
 
@@ -54,6 +56,8 @@ export default function PrimarySearchAppBar() {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const navigate = useNavigate()
+
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -73,6 +77,7 @@ export default function PrimarySearchAppBar() {
         >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <Link to="ac"><MenuItem onClick={handleMenuClose}>Login</MenuItem></Link>
         </Menu>
     );
 
@@ -146,6 +151,7 @@ export default function PrimarySearchAppBar() {
                         noWrap
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
+                        onClick={() => navigate('/')}
                     >
                         Car Expert Reports
                     </Typography>
